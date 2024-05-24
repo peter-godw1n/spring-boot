@@ -1,8 +1,19 @@
 package com.peter.demo.student;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.Period;
+
+@Entity
+@Table(name = "student")
 public class Student {
+
+
+    @Id
+    @GeneratedValue
+
+    private Integer Id;
 
     private String firstname;
 
@@ -10,8 +21,10 @@ public class Student {
 
     private LocalDate dateOfBirth;
 
+    @Column(unique = true)
     private String email;
 
+    @Transient
     private int age;
 
 
@@ -28,6 +41,14 @@ public class Student {
     }
 
     public Student() {
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getFirstname() {
@@ -63,7 +84,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {

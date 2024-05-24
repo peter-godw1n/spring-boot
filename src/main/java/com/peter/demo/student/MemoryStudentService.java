@@ -1,17 +1,15 @@
 package com.peter.demo.student;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class inMemoryStudentService implements StudentService {
+public class MemoryStudentService implements StudentService {
 
-    private final inMemoryStudentDao dao;
+    private final MemoryStudentDao dao;
 
-    public inMemoryStudentService(inMemoryStudentDao dao) {
+    public MemoryStudentService(MemoryStudentDao dao) {
         this.dao = dao;
     }
 
